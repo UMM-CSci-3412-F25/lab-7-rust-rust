@@ -15,6 +15,9 @@ fn main() {
 
     //TODO: Panic if not enough arguments are provided
     //Panic should output the string "Not enough arguments"
+    if args.is_empty() | (args.len() == 1) {
+        panic!("Not enough arguments");
+    }
 
     //TODO:
     //  * Pass an argument to read_file to read the original text
@@ -22,13 +25,13 @@ fn main() {
     //  * Write the disemvoweled text using write_file
 
     // Replace String::from("dummy text") with what you get from read_file
-    let s = String::from("dummy text");
+    let s = read_file(Path::new(&args[0]));
 
     let s_disemvowel = disemvowel(&s);
 
     // Use command-line arguments for the name of the file,
     // and s_disemvowel for the text to write out.
-    write_file(Path::new("dummy.txt"), "output string");
+    write_file(Path::new(&args[1]), s_disemvowel);
 }
 
 fn read_file(path: &Path) -> String {
