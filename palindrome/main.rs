@@ -4,11 +4,19 @@ fn main() {
 }
 
 fn palindrome(s: &str) -> String {
-
+  if s == str_reverse(s) {
+    return String::from("Yes");
+  } else {
+    return String::from("No");
+  }
 }
 
 fn str_reverse(s: &str) -> String {
-   
+  let mut output = String::from("");
+   for c in s.chars().rev() {
+    output.push(c);
+   }  
+   return output;
 }
 
 /*
